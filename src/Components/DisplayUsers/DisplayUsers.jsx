@@ -3,7 +3,7 @@ import "./DisplayUsers.css";
 import UserCard from "../UserCard/UserCard";
 import { AuthContext } from "../../lib/contexts/Auth/AuthContext";
 
-function DisplayUsers({ idsArr }) {
+function DisplayUsers({ idsArr, allDetailsArr=false }) {
   const [usersArr, setUsersArr] = useState([]);
   const { user, api } = useContext(AuthContext);
 
@@ -24,8 +24,12 @@ function DisplayUsers({ idsArr }) {
   }, [idsArr, api, user]);
 
   useEffect(() => {
+    if (idsArr) {
     updateUsersArr();
-  }, [updateUsersArr]);
+    } else if (allDetailsArr) {
+      setUsersArr(allDetailsArr);
+    }
+  }, [updateUsersArr, idsArr, allDetailsArr]);
 
   return (
     <div className="display-users">

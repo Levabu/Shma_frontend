@@ -16,5 +16,6 @@ export const endpoints = {
     friends:"/friends",
     checkFriendship:"/check-friendship",
     request:"/friend-request",
-    confirm:"/confirm-friendship"
+    confirm:"/confirm-friendship",
+    search:"/search"
 }

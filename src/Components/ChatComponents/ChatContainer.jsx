@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { AuthContext } from '../../lib/contexts/Auth/AuthContext';
 import { WsContext } from '../../lib/contexts/Ws/WsContext';
 import FriendRequests from './FriendRequestsButton';
+import MyProfile from './MyProfile';
+import SearchButton from './SearchButton';
 
 export default function ChatContainer({ currentChat, socket, selectedTab, messages, setMessages}) {
   
@@ -69,6 +71,8 @@ export default function ChatContainer({ currentChat, socket, selectedTab, messag
           </div>
         </div>
         <dib className="buttons">
+          <MyProfile />
+          <SearchButton />
           <FriendRequests />
           <Logout />
         </dib>

@@ -5,8 +5,15 @@ import { AuthProvider } from './lib/contexts/Auth/AuthContext';
 import { WsProvider } from './lib/contexts/Ws/WsContext';
 import UserInfo from './Components/UserInfo/UserInfo';
 import Chat from './Pages/Chat';
+import { useEffect } from 'react';
+import { getToken } from './lib/contexts/Auth/utils';
 
 function App() {
+  const token = getToken()
+
+  useEffect(() => {
+    console.log(token);
+  }, [token]);
   return (
     <BrowserRouter>
       <AuthProvider>

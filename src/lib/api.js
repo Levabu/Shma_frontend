@@ -21,7 +21,5 @@ export default class Api {
 
   getFriendsIds = async (id) => await this.axios.get(`${endpoints.friendships}${endpoints.friends}/${id}`)
 
-  // signup =
-
-  // getMessages...
+  getSearchIds = async (searchFor, userId) => await this.axios.post(`${endpoints.users}${endpoints.search}`, { searchFor, userId })
 }
