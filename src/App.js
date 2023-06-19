@@ -17,10 +17,7 @@ function App() {
     console.log(token);
   }, [token]);
 
-  console.log('user', user)
   return (
-    <BrowserRouter>
-      <AuthProvider>
         <WsProvider>
           <div className='App'>
           <Routes>
@@ -34,26 +31,22 @@ function App() {
                 <UserInfo />
               </ProtectedRoute>
               } />
-              {/* <Route path='/login' element={
+              <Route path='/' element={
               <ProtectedRoute>
                 <Chat />
               </ProtectedRoute>
-              } /> */}
-
+              } />
               <Route path='*' element={
               <ProtectedRoute>
                 <Chat />
               </ProtectedRoute>
               } />
-               {user === undefined && <Route path='/login' element={<SignIn />} />}
-               {user === undefined && <Route path='*' element={<SignIn />} />}
-
+              {!user.isLoggedIn && <Route path='/login' element={<SignIn />} />}
+              {!user.isLoggedIn && <Route path='*' element={<SignIn />} />}
             </Routes>
           </div>
-        </WsProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  );
+        </WsProvider>)
+        ;
 }
 
 export default App;
