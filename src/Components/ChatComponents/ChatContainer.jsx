@@ -70,12 +70,12 @@ export default function ChatContainer({ currentChat, socket, selectedTab, messag
             <h3>{currentChat.username || currentChat.name}</h3>
           </div>
         </div>
-        <dib className="buttons">
+        <div className="buttons">
           <MyProfile />
           <SearchButton />
           <FriendRequests />
           <Logout />
-        </dib>
+        </div>
       </div>
       <div className='chat-messages'>
         {messages.map((message) => {
