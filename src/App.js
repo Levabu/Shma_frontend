@@ -9,6 +9,7 @@ import { useContext, useEffect } from 'react';
 import { getToken } from './lib/contexts/Auth/utils';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 
+
 function App() {
   const token = getToken()
   const {user} = useContext(AuthContext);
@@ -21,17 +22,8 @@ function App() {
         <WsProvider>
           <div className='App'>
           <Routes>
+          {token && <Route path='/user' element={<UserInfo />} />}
           <Route path='/chat' element={
-              <ProtectedRoute>
-                <Chat />
-              </ProtectedRoute>
-              } />
-              <Route path='/user' element={
-              <ProtectedRoute>
-                <UserInfo />
-              </ProtectedRoute>
-              } />
-              <Route path='/' element={
               <ProtectedRoute>
                 <Chat />
               </ProtectedRoute>
@@ -41,8 +33,8 @@ function App() {
                 <Chat />
               </ProtectedRoute>
               } />
-              {!user.isLoggedIn && <Route path='/login' element={<SignIn />} />}
-              {!user.isLoggedIn && <Route path='*' element={<SignIn />} />}
+              {!token && <Route path='/login' element={<SignIn />} />}
+              {!token && <Route path='/' element={<SignIn />} />}
             </Routes>
           </div>
         </WsProvider>)
