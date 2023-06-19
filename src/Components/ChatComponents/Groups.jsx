@@ -41,9 +41,6 @@ export default function Groups({ groups, changeChat,  setMessages, chatsHistory 
                     }`}
                     onClick={() => changeCurrentChat(index, group)}
                   >
-                    <div className='avatar'>
-                      <img src={Logo} alt='' />
-                    </div>
                     <div className='username'>
                       <h3>{group.name}</h3>
                     </div>
@@ -110,12 +107,8 @@ const Container = styled.div`
       gap: 1rem;
       align-items: center;
       transition: 0.5s ease-in-out;
-      .avatar {
-        img {
-          height: 2rem;
-        }
-      }
       .username {
+        margin-left: 1rem;
         h3 {
           color: white;
         }

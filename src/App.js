@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignIn from './Components/SignIn/SignIn';
-import { AuthProvider, AuthContext } from './lib/contexts/Auth/AuthContext';
+import { AuthContext } from './lib/contexts/Auth/AuthContext';
 import { WsProvider } from './lib/contexts/Ws/WsContext';
 import UserInfo from './Components/UserInfo/UserInfo';
 import Chat from './Pages/Chat';

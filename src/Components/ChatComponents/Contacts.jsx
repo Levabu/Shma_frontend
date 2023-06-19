@@ -43,9 +43,6 @@ export default function Contacts({ contacts, changeChat, setMessages, chatsHisto
                     }`}
                     onClick={() => changeCurrentChat(index, contact)}
                   >
-                    <div className='avatar'>
-                      <img src={Logo} alt='' />
-                    </div>
                     <div className='username'>
                       <h3>{contact.username}</h3>
                     </div>
@@ -113,15 +110,10 @@ const Container = styled.div`
       border-radius: 0.4rem;
       padding: 0 2px;
       display: flex;
-      gap: 1rem;
       align-items: center;
       transition: 0.5s ease-in-out;
-      .avatar {
-        img {
-          height: 2rem;
-        }
-      }
       .username {
+        margin-left: 1rem;
         h3 {
           color: white;
         }
