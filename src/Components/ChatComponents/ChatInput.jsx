@@ -72,6 +72,7 @@ const Container = styled.div`
       top: 0.5rem;
       padding: 0;
       padding-left: 0.5rem;
+      z-index: 2;
       svg {
         font-size: 1.5rem;
         color: #ffff00c8;
