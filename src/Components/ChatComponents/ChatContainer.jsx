@@ -86,10 +86,14 @@ export default function ChatContainer({ currentChat, socket, selectedTab, messag
                   message.fromSelf ? 'sended' : 'recieved'
                 }`}
               >
-                <div className='content '>
-                <span className='display-user'>{ !message.fromSelf ? (currentChat.username || message.userName )  
-                  : user.userName}</span> 
-                  <span className='display-date'>{convertDate(message.createdAt)}</span>
+                <div className='content'>
+                  <div className='top'>
+                    <span className='display-user'>
+                      {!message.fromSelf ? (currentChat.username || message.userName )  
+                      : user.userName}
+                    </span> 
+                    <span className='display-date'>{convertDate(message.createdAt)}</span>
+                  </div>
                   <p>{message.message}</p>
                 </div>
               </div>
@@ -155,10 +159,14 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       .content {
-        min-width: 10%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 25%;
         max-width: 40%;
         overflow-wrap: break-word;
         padding: 0 1rem;
+        padding-top: 0.5rem;
         padding-bottom: 1rem;
         margin: 0;
         font-size: 1.1rem;
@@ -166,6 +174,21 @@ const Container = styled.div`
         color: #d1d1d1;
         @media screen and (min-width: 720px) and (max-width: 1080px) {
           max-width: 70%;
+        }
+        .top {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: 1rem;
+        }
+        .display-user {
+          color: pink;
+        }
+        .display-date {
+          font-size: 0.7rem;
+        }
+        p {
+          text-align: left;
         }
       }
     }
@@ -182,18 +205,6 @@ const Container = styled.div`
         position: relative;
         background-color: #722994;
       }
-    }
-    .display-user {
-      display: block;
-      position: relative;
-      color: pink;
-      top: -1rem;
-    }
-
-    .display-date {
-      font-size: 0.7rem;
-      position: relative;
-      top: -1.5rem;
     }
   }
 
