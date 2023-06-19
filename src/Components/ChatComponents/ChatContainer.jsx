@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import ChatInput from './ChatInput';
 import Logout from './Logout';
@@ -14,7 +14,7 @@ export default function ChatContainer({ currentChat, socket, selectedTab, messag
   
   const scrollRef = useRef();
   const { user } = useContext(AuthContext);
-  const { setChatsHistory, chatsHistory } = useContext(WsContext);
+  const { chatsHistory, setChatsHistory } = useContext(WsContext);
 
   const convertDate = (date) => {
     return new Date(date).toDateString();
@@ -25,6 +25,7 @@ export default function ChatContainer({ currentChat, socket, selectedTab, messag
     socket.emit('chat_message', {
       to: currentChat.id,
       from: user.id,
+      userName: user.userName,
       type: selectedTab === 'friends' ? 'private' : 'group',
       message,
       createdAt: new Date().toISOString().slice(0, 19).replace('T', ' ')

@@ -5,7 +5,7 @@ import StarLogo from '../../assets/davidstar.png';
 import { AuthContext } from '../../lib/contexts/Auth/AuthContext';
 import { WsContext } from '../../lib/contexts/Ws/WsContext';
 
-export default function Groups({ groups, changeChat,  setMessages, chatsHistory }) {
+export default function Groups({ groups, currentChat, changeChat,  setMessages, chatsHistory }) {
   const { user } = useContext(AuthContext);
   const [currentUserImage, setCurrentUserImage] = useState(Logo);
   const [currentGroupSelected, setCurrentGroupSelected] =  useState(groups[0]);
@@ -21,6 +21,11 @@ export default function Groups({ groups, changeChat,  setMessages, chatsHistory 
     }
     
   };
+
+  useEffect(() => {
+    if (chatsHistory.group[currentChat?.id] === undefined) setMessages([])
+    else setMessages(chatsHistory.group[currentChat?.id]);
+  }, [chatsHistory]);
  
   return (
     <>

@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import Logo from '../../assets/itc.png';
 import StarLogo from '../../assets/davidstar.png';
 import { AuthContext } from '../../lib/contexts/Auth/AuthContext';
 import { WsContext } from '../../lib/contexts/Ws/WsContext';
 
-export default function Contacts({ contacts, changeChat, setMessages, chatsHistory }) {
+export default function Contacts({ contacts, currentChat, changeChat, setMessages, chatsHistory }) {
   const { user } = useContext(AuthContext);
   const [currentUserImage, setCurrentUserImage] = useState(Logo);
   const [currentSelected, setCurrentSelected] = useState(); 
@@ -20,6 +20,11 @@ export default function Contacts({ contacts, changeChat, setMessages, chatsHisto
       setMessages(chatsHistory.private[contact.id]);
     }
   };
+
+  useEffect(() => {
+    if (chatsHistory.private[currentChat?.id] === undefined) setMessages([])
+    else setMessages(chatsHistory.private[currentChat?.id]);
+  }, [chatsHistory]);
 
   return (
     <>

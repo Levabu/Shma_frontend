@@ -11,7 +11,6 @@ import { AuthContext } from '../lib/contexts/Auth/AuthContext';
 export default function Chat() {
   const {user} = useContext(AuthContext);
   const [selectedTab, setSelectedTab] = useState('friends');
-  const navigate = useNavigate();
   const { socket, chatsHistory } = useContext(WsContext);
   const [contacts, setContacts] = useState([]);
 
@@ -73,12 +72,14 @@ export default function Chat() {
               {selectedTab === 'friends' ? (
                 <Contacts contacts={contacts} 
                 changeChat={handleChatChange}
+                currentChat={currentChat}
                 setMessages={setMessages} 
                 chatsHistory={chatsHistory} 
                 />
               ) : (
             <Groups groups={groups} 
-                changeChat={handleChatChange} 
+                changeChat={handleChatChange}
+                currentChat={currentChat}
                 setMessages={setMessages}  
                 chatsHistory={chatsHistory}
                 />
