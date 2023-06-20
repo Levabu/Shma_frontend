@@ -1,13 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import Logo from '../../assets/itc.png';
-import StarLogo from '../../assets/davidstar.png';
+import StarLogo from '../../assets/chat-logo.png';
 import { AuthContext } from '../../lib/contexts/Auth/AuthContext';
 import { WsContext } from '../../lib/contexts/Ws/WsContext';
 
 export default function Contacts({ contacts, currentChat, changeChat, setMessages, chatsHistory }) {
   const { user } = useContext(AuthContext);
-  const [currentUserImage, setCurrentUserImage] = useState(Logo);
+  const [currentUserImage, setCurrentUserImage] = useState(StarLogo);
   const [currentSelected, setCurrentSelected] = useState(); 
   const { isChatHistoryLoaded } = useContext(WsContext);
 
@@ -84,7 +83,7 @@ const Container = styled.div`
     margin-bottom: 1rem;
     justify-content: center;
     img {
-      height: 1.5rem;
+      height: 2.5rem;
     }
     h3 {
       color: white;
